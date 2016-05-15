@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160512040303) do
+ActiveRecord::Schema.define(version: 20160515201732) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,8 +37,9 @@ ActiveRecord::Schema.define(version: 20160512040303) do
     t.integer  "losing_score"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "status",        default: true
+    t.boolean  "status",                                default: true
     t.datetime "schedule"
+    t.decimal  "bet_amount",    precision: 5, scale: 2
   end
 
   create_table "users", force: :cascade do |t|

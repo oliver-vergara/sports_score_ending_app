@@ -6,125 +6,78 @@
 .tg .tg-qj3h{font-size:36px;text-align:center;vertical-align:top}
 .tg .tg-yw4l{vertical-align:top}
 </style>
-<table class="tg">
-  <tr>
-    <th class="tg-qj3h"></th>
-    <th class="tg-yw4l"></th>
-    <th class="tg-yw4l"></th>
-    <th class="tg-yw4l"></th>
-    <th class="tg-yw4l"></th>
-    <th class="tg-yw4l"></th>
-    <th class="tg-yw4l"></th>
-    <th class="tg-yw4l"></th>
-    <th class="tg-yw4l"></th>
-    <th class="tg-yw4l"></th>
-  </tr>
-  <tr>
-    <td class="tg-baqh"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-  </tr>
-  <tr>
-    <td class="tg-baqh"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-  </tr>
-  <tr>
-    <td class="tg-baqh"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-  </tr>
-  <tr>
-    <td class="tg-baqh"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-  </tr>
-  <tr>
-    <td class="tg-baqh"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-  </tr>
-  <tr>
-    <td class="tg-baqh"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-  </tr>
-  <tr>
-    <td class="tg-baqh"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-  </tr>
-  <tr>
-    <td class="tg-baqh"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-  </tr>
-  <tr>
-    <td class="tg-baqh"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-  </tr>
-</table>
+
+
+<h2><%= @name %></h2>
+<h2><%= @schedule %></h2>
+<h2>Bet   <%= @bet_amount %></h2>
+<h2>Pot   <%= @bet_amount * 90 %></h2>
+<h2>Banker   <%= @banker %></h2>
+<%= form_tag '/bets/batch', method: :post do %>
+
+  <table class="tg">
+    <tr>
+      <% @row_1.each do |combo| %>
+      <td class="tg-qj3h"><%= check_box_tag combo.id, true %><%= combo.pick %></td>
+      <% end %>
+    </tr>
+
+    <tr>
+      <% @row_2.each do |combo| %>
+      <td class="tg-qj3h"><%= check_box_tag combo.pick, combo.pick %><%= combo.pick %></td>
+      <% end %>
+    </tr>
+
+      <tr>
+      <% @row_3.each do |combo| %>
+      <td class="tg-qj3h"><%= check_box_tag combo.pick, combo.pick %><%= combo.pick %></td>
+      <% end %>
+    </tr>
+
+      <tr>
+      <% @row_4.each do |combo| %>
+      <td class="tg-qj3h"><%= check_box_tag combo.pick, combo.pick %><%= combo.pick %></td>
+      <% end %>
+    </tr>
+
+      <tr>
+      <% @row_5.each do |combo| %>
+      <td class="tg-qj3h"><%= check_box_tag combo.pick, combo.pick %><%= combo.pick %></td>
+      <% end %>
+    </tr>
+
+      <tr>
+      <% @row_6.each do |combo| %>
+      <td class="tg-qj3h"><%= check_box_tag combo.pick, combo.pick %><%= combo.pick %></td>
+      <% end %>
+    </tr>
+
+      <tr>
+      <% @row_7.each do |combo| %>
+      <td class="tg-qj3h"><%= check_box_tag combo.pick, combo.pick %><%= combo.pick %></td>
+      <% end %>
+    </tr>
+
+      <tr>
+      <% @row_8.each do |combo| %>
+      <td class="tg-qj3h"><%= check_box_tag combo.pick, combo.pick %><%= combo.pick %></td>
+      <% end %>
+    </tr>
+
+      <tr>
+      <% @row_9.each do |combo| %>
+      <td class="tg-qj3h"><%= check_box_tag combo.pick, combo.pick %><%= combo.pick %></td>
+      <% end %>
+    </tr>
+
+      <tr>
+      <% @row_10.each do |combo| %>
+      <td class="tg-qj3h"><%= check_box_tag combo.pick, combo.pick %><%= combo.pick %></td>
+      <% end %>
+    </tr>
+    
+  </table>
+  <%= hidden_field_tag :product_id, @product.id %>
+
+  <%= submit_tag 'Commit' %>
+<% end %>

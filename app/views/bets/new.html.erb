@@ -1,0 +1,11 @@
+<h2>Start a New Game</h2>
+
+<%= form_tag '/bets/new', method: :post do %>
+
+  <div>
+    <%= collection_select :game, :game_id, Game.all, :id, :name %>
+  </div>
+
+  <%= submit_tag 'Start Game' %>
+
+<% end %>
