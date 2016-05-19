@@ -11,13 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160515201732) do
+ActiveRecord::Schema.define(version: 20160515233437) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "bets", force: :cascade do |t|
-    t.integer  "banker_id"
     t.integer  "better_id"
     t.integer  "game_id"
     t.integer  "combo_id"
@@ -38,8 +37,9 @@ ActiveRecord::Schema.define(version: 20160515201732) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "status",                                default: true
-    t.datetime "schedule"
+    t.string   "schedule"
     t.decimal  "bet_amount",    precision: 5, scale: 2
+    t.integer  "banker_id"
   end
 
   create_table "users", force: :cascade do |t|

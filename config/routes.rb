@@ -3,13 +3,15 @@ Rails.application.routes.draw do
   devise_for :users
 
   root 'games#index'
+
   get '/games', to: 'games#index'
   get '/games/new', to: 'games#new'
-  post '/games', to: 'games#create'
+  post '/games/:id', to: 'games#create'
   get '/games/:id', to: 'games#show'
 
   post '/bets/batch', to: 'bets#batch'
-  get '/bets/new', to: 'bets#new'
+  get '/bets', to: 'bets#index'
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

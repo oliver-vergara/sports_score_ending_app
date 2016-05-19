@@ -8,76 +8,28 @@
 </style>
 
 
-<h2><%= @name %></h2>
-<h2><%= @schedule %></h2>
-<h2>Bet   <%= @bet_amount %></h2>
-<h2>Pot   <%= @bet_amount * 90 %></h2>
-<h2>Banker   <%= @banker %></h2>
+<h2><%= @game.name %></h2>
+<h2><%= @game.schedule %></h2>
+<h2>Bet   <%= @game.bet_amount %></h2>
+<h2>Pot   <%= @game.bet_amount * 90 %></h2>
+<h2>Banker   <%= @game.banker_id %></h2>
 <%= form_tag '/bets/batch', method: :post do %>
 
   <table class="tg">
-    <tr>
-      <% @row_1.each do |combo| %>
-      <td class="tg-qj3h"><%= check_box_tag combo.id, true %><%= combo.pick %></td>
-      <% end %>
-    </tr>
-
-    <tr>
-      <% @row_2.each do |combo| %>
-      <td class="tg-qj3h"><%= check_box_tag combo.pick, combo.pick %><%= combo.pick %></td>
-      <% end %>
-    </tr>
-
+    <% @rows.each do |row| %>
       <tr>
-      <% @row_3.each do |combo| %>
-      <td class="tg-qj3h"><%= check_box_tag combo.pick, combo.pick %><%= combo.pick %></td>
-      <% end %>
-    </tr>
-
-      <tr>
-      <% @row_4.each do |combo| %>
-      <td class="tg-qj3h"><%= check_box_tag combo.pick, combo.pick %><%= combo.pick %></td>
-      <% end %>
-    </tr>
-
-      <tr>
-      <% @row_5.each do |combo| %>
-      <td class="tg-qj3h"><%= check_box_tag combo.pick, combo.pick %><%= combo.pick %></td>
-      <% end %>
-    </tr>
-
-      <tr>
-      <% @row_6.each do |combo| %>
-      <td class="tg-qj3h"><%= check_box_tag combo.pick, combo.pick %><%= combo.pick %></td>
-      <% end %>
-    </tr>
-
-      <tr>
-      <% @row_7.each do |combo| %>
-      <td class="tg-qj3h"><%= check_box_tag combo.pick, combo.pick %><%= combo.pick %></td>
-      <% end %>
-    </tr>
-
-      <tr>
-      <% @row_8.each do |combo| %>
-      <td class="tg-qj3h"><%= check_box_tag combo.pick, combo.pick %><%= combo.pick %></td>
-      <% end %>
-    </tr>
-
-      <tr>
-      <% @row_9.each do |combo| %>
-      <td class="tg-qj3h"><%= check_box_tag combo.pick, combo.pick %><%= combo.pick %></td>
-      <% end %>
-    </tr>
-
-      <tr>
-      <% @row_10.each do |combo| %>
-      <td class="tg-qj3h"><%= check_box_tag combo.pick, combo.pick %><%= combo.pick %></td>
-      <% end %>
-    </tr>
-    
+        <% row.each do |combo| %>
+          <% if !@bets.select { |bet| bet.combo_id == combo.id }.empty? %>
+            <td class="tg-qj3h"><%= check_box_tag combo.id, true, true %><%= combo.pick %></td>
+          <% else %>
+            <td class="tg-qj3h"><%= check_box_tag combo.id, true %><%= combo.pick %></td>
+          <% end %>
+        <% end %>
+      </tr>
+    <% end %>
   </table>
-  <%= hidden_field_tag :product_id, @product.id %>
+
+  <%= hidden_field_tag :game_id, @game.id %>
 
   <%= submit_tag 'Commit' %>
 <% end %>
