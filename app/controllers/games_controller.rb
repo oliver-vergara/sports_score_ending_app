@@ -45,6 +45,18 @@ class GamesController < ApplicationController
 
     @bets = Bet.where(game_id: @game.id)
     # @banker = Bet.find_by(id: params[:id]).banker_id
+
+    @winner = @game.winning_score
+    @loser = @game.losing_score
+    @winning_combo = (@winner % 10).to_s + "-" + (@loser % 10).to_s
+    @winning_combo_id = Combo.find_by(pick: @winning_combo).id
+    @winning_user = User.find((Bet.find_by(combo_id: @winning_combo_id).better_id))
+    # amount = "formula for amount won"
+    # newbalance = User.find(params[:id]).balance + amount
+    # User.update(balance: newbalance)
+
+
+
   end
 
 

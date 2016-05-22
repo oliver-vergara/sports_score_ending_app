@@ -10,17 +10,21 @@
 
 <h2><%= @game.name %></h2>
 <h2><%= @game.schedule %></h2>
-<h2>Bet   <%= @game.bet_amount %></h2>
-<h2>Pot   <%= @game.bet_amount * 90 %></h2>
-<h2>Banker   <%= @game.banker_id %></h2>
+<h2>Bet:   <%= @game.bet_amount %></h2>
+<h2>Pot:   <%= @game.bet_amount * 90 %></h2>
+<h2>Banker:   <%= @game.banker_id %></h2>
+
 <%= form_tag '/bets/batch', method: :post do %>
 
   <table class="tg">
     <% @rows.each do |row| %>
       <tr>
         <% row.each do |combo| %>
-          <% if !@bets.select { |bet| bet.combo_id == combo.id }.empty? %>
+          <% if !@bets.select { |bet| bet.combo_id == combo.id && bet.better_id == current_user.id }.empty? %>
+          <!-- shows only logged in user's bets -->
             <td class="tg-qj3h"><%= check_box_tag combo.id, true, true %><%= combo.pick %></td>
+          <% elsif !@bets.select { |bet| bet.combo_id == combo.id && bet.better_id != current_user.id }.empty? %> 
+            <td class="tg-qj3h"><%= check_box_tag combo.id, true, true, disabled: true %><%= combo.pick %></td>
           <% else %>
             <td class="tg-qj3h"><%= check_box_tag combo.id, true %><%= combo.pick %></td>
           <% end %>
@@ -33,3 +37,6 @@
 
   <%= submit_tag 'Commit' %>
 <% end %>
+
+<h1> Winning Combo: <%= @winning_combo %></h1>
+<h1> User ID: <%= @winning_user.id%> WON!</h1>
