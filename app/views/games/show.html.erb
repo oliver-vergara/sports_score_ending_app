@@ -11,8 +11,11 @@
 <h2><%= @game.name %></h2>
 <h2><%= @game.schedule %></h2>
 <h2>Bet:   <%= @game.bet_amount %></h2>
-<h2>Pot:   <%= @game.bet_amount * 90 %></h2>
+<h2>Pot:   <%= @pot %></h2>
 <h2>Banker:   <%= @game.banker_id %></h2>
+<% if current_user%>
+  <h2>Total Balance: <%= @total_balance%></h2>
+<% end %>
 
 <%= form_tag '/bets/batch', method: :post do %>
 
@@ -37,6 +40,8 @@
 
   <%= submit_tag 'Commit' %>
 <% end %>
+<% if @winning_user && @winning_combo %>
+  <h1> Winning Combo: <%= @winning_combo %></h1>
+  <h1> User ID: <%= @winning_user.id %> WON!</h1>
+<% end %>
 
-<h1> Winning Combo: <%= @winning_combo %></h1>
-<h1> User ID: <%= @winning_user.id%> WON!</h1>
