@@ -2,6 +2,11 @@ class GamesController < ApplicationController
 
   def index
     @games = Game.all
+
+    if current_user
+        games_of_user = current_user.games.where(complete: true)
+        #determine winner, and update winner's balance
+    end
   end
 
   def new

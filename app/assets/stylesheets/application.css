@@ -10,6 +10,14 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require theme/animate-custom
+ *= require theme/bootstrap
+ *= require theme/icomoon
+ *= require theme/main
+ *= require theme/animate-custom
+ *= require theme/bootstrap
+ *= require theme/icomoon
+ *= require theme/main
  *= require_tree .
  *= require_self
  */

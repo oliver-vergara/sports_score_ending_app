@@ -1,3 +1,44 @@
 // Place all the styles related to the games controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body{
+  background: image-url('sports1.jpg');
+  background-position: center top;
+}
+
+.button.mini, button.mini {
+    font-size: 0.875rem;
+    padding: 8px 16px;
+    line-height: 1;
+}
+.button.button-transparent-bg, button.button-transparent-bg {
+    background: transparent;
+}
+.button:visited, button:visited {
+    color: #4e8be6;
+}
+.button {
+    font-family: 'Proxima-Nova', Helvetica, Arial, sans-serif;
+}
+.button, button {
+    background: #fff;
+    color: #4e8be6;
+    border: 1px solid #1958b5;
+    font-size: 1.125rem;
+    display: inline-block;
+    margin: 0;
+    padding: 12px 34px;
+    font-family: "Proxima-Nova", Helvetica, Arial, sans-serif;
+    line-height: 1;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+}
+.button, div.toggle label, nav a {
+    -webkit-tap-highlight-color: transparent;
+}
