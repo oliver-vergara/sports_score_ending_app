@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <div id="navbar-main">
       <!-- Fixed navbar -->
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -11,7 +12,7 @@
           <a class="navbar-brand hidden-xs hidden-sm" href="#home"><span class="icon icon-shield" style="font-size:18px; color:#3498db;"></span></a>
         </div>
         <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
+          <ul class="nav navbar-nav pull-right" >
             <% if current_user %>
               <li><a href="#home" class="smoothScroll">Home</a></li>
               <li> <a href="#about" class="smoothScroll"> About</a></li>
@@ -20,7 +21,7 @@
               <li> <a href="#portfolio" class="smoothScroll"> Portfolio</a></li>
               <li> <a href="#blog" class="smoothScroll"> Blog</a></li>
               <li> <a href="#contact" class="smoothScroll"> Contact</a></li>
-              <li> <a class="navbar-header pull-right"> Balance <%= current_user.balance %> </a></li>
+              <li> <a class="navbar-header"> Balance <%= current_user.balance %> </a></li>
             <% end %>
             <% if !current_user && !request.original_url.include?("sign_in")%>
               <li> <a href="http://localhost:3000/users/sign_in" target="_self" class="button mini button-transparent-bg" data-ga-interaction="Login Button" data-ga-text="innerText">Log in </a></li>
