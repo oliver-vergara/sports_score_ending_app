@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160605222218) do
+ActiveRecord::Schema.define(version: 20160610041747) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,11 +24,17 @@ ActiveRecord::Schema.define(version: 20160605222218) do
     t.datetime "updated_at"
   end
 
+  add_index "bets", ["better_id"], name: "index_bets_on_better_id", using: :btree
+  add_index "bets", ["combo_id"], name: "index_bets_on_combo_id", using: :btree
+  add_index "bets", ["game_id"], name: "index_bets_on_game_id", using: :btree
+
   create_table "combos", force: :cascade do |t|
     t.string   "pick"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "combos", ["pick"], name: "index_combos_on_pick", using: :btree
 
   create_table "games", force: :cascade do |t|
     t.string   "name"
@@ -41,6 +47,10 @@ ActiveRecord::Schema.define(version: 20160605222218) do
     t.decimal  "bet_amount",    precision: 9, scale: 2
     t.integer  "banker_id"
   end
+
+  add_index "games", ["banker_id"], name: "index_games_on_banker_id", using: :btree
+  add_index "games", ["losing_score"], name: "index_games_on_losing_score", using: :btree
+  add_index "games", ["winning_score"], name: "index_games_on_winning_score", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                                          default: "", null: false
