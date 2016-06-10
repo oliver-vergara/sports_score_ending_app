@@ -11,6 +11,12 @@ Rails.application.routes.draw do
 
   post '/bets/batch', to: 'bets#batch'
   get '/bets', to: 'bets#index'
+
+  # get 'users/:id/edit', to: 'users#edit'
+  # post 'users/:id', to: 'users#update'
+
+  get 'users/add_funds_form', to: 'users#add_funds_form'
+  post 'users/add_funds', to: 'users#add_funds'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

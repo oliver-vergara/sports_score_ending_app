@@ -1,0 +1,14 @@
+<h1>Add Funds</h1>
+
+<%= form_tag "/users/add_funds", method: :post do %>
+
+  <div>
+    <%= label_tag :balance %>
+    <%= text_field_tag :balance  %>
+  </div>
+
+  <%= submit_tag 'Add Funds' %>
+ 
+<% end %>
+
+
