@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160610041747) do
+ActiveRecord::Schema.define(version: 20160611065100) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 20160610041747) do
     t.integer  "losing_score"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "status",                                default: true
+    t.boolean  "completed",                             default: true
     t.string   "schedule"
     t.decimal  "bet_amount",    precision: 9, scale: 2
     t.integer  "banker_id"

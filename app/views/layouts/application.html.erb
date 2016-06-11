@@ -22,7 +22,7 @@
               <li> <a href="#blog" class="smoothScroll"> Blog</a></li>
               <li> <a href="#contact" class="smoothScroll"> Contact</a></li>
               <li> <a class="navbar-header"> <p class="amount"><%= current_user.balance %></p> <p class="balance">Balance</p>  </a></li>
-              <li> <button href="/users/add_funds_form" type="button" class="btn-xs btn-primary">Add Fund</button></li>
+              <li> <a href="/users/add_funds_form" type="button" class="btn-xs btn-primary">Add Fund</a></li>
             <% end %>
             <% if !current_user && !request.original_url.include?("sign_in")%>
               <li> <a href="http://localhost:3000/users/sign_in" target="_self" class="button mini button-transparent-bg" data-ga-interaction="Login Button" data-ga-text="innerText">Log in </a></li>
