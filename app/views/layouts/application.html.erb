@@ -14,13 +14,13 @@
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav pull-right" >
             <% if current_user %>
-              <li><a href="#home" class="smoothScroll">Home</a></li>
-              <li> <a href="#about" class="smoothScroll"> About</a></li>
-              <li> <a href="#services" class="smoothScroll"> Services</a></li>
-              <li> <a href="#team" class="smoothScroll"> Team</a></li>
-              <li> <a href="#portfolio" class="smoothScroll"> Portfolio</a></li>
-              <li> <a href="#blog" class="smoothScroll"> Blog</a></li>
-              <li> <a href="#contact" class="smoothScroll"> Contact</a></li>
+              <li><a href="#home" class="smoothScroll">Lobby</a></li>
+              <li> <a href="#about" class="smoothScroll"> How to play</a></li>
+              <li> <a href="#services" class="smoothScroll"> Upcoming</a></li>
+              <li> <a href="#team" class="smoothScroll"> History</a></li>
+              <li> <a href="#portfolio" class="smoothScroll"> Help</a></li>
+              <!-- <li> <a href="#blog" class="smoothScroll"> Blog</a></li>
+              <li> <a href="#contact" class="smoothScroll"> Contact</a></li> -->
               <li> <a class="navbar-header"> <p class="amount"><%= current_user.balance %></p> <p class="balance">Balance</p>  </a></li>
               <li> <a href="/users/add_funds_form" type="button" class="btn-xs btn-primary">Add Fund</a></li>
             <% end %>

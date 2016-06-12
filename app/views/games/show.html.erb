@@ -12,10 +12,8 @@
 <h2 class="active"><%= @game.schedule %></h2>
 <h2 class="active">Bet:   <%= @game.bet_amount %></h2>
 <h2 class="active">Pot:   <%= @pot %></h2>
-<h2 class="active">Banker:   <%= @game.banker_id %></h2>
-<% if current_user%>
-  <h2 class="active">Total Balance: <%= @total_balance%></h2>
-<% end %>
+<h2 class="active">Banker:   <%= @game.banker %></h2>
+
 
 <%= form_tag '/bets/batch', method: :post do %>
 

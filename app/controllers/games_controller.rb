@@ -14,7 +14,7 @@ class GamesController < ApplicationController
   end
 
   def create
-    @game = Game.new(name: params[:name], schedule: params[:schedule], bet_amount: params[:bet_amount], banker_id: current_user.id)
+    @game = Game.new(name: params[:name], schedule: params[:schedule], bet_amount: params[:bet_amount], banker_id: current_user.id, banker: current_user.username)
     @game.save
     redirect_to "/games/#{@game.id}"
   end
@@ -32,7 +32,6 @@ class GamesController < ApplicationController
     @row_9 = Combo.all[80..89]
     @row_10 = Combo.all[90..99]
 
-
     @rows << @row_1
     @rows << @row_2
     @rows << @row_3
@@ -44,39 +43,36 @@ class GamesController < ApplicationController
     @rows << @row_9
     @rows << @row_10
 
-
-
     @game = Game.find_by(id: params[:id])
-
     @bets = Bet.where(game_id: @game.id)
-
-    # @subtotal_fund = Game.find_by(id: @game.id).bet_amount
-    # @banker = Bet.find_by(id: params[:id]).banker_id
     @pot = @game.bet_amount * 90
-
-
-
 
     @winner = @game.winning_score
     @loser = @game.losing_score
-    if @winner && @loser 
+    if @winner && @loser && @game.completed == false
         @winning_combo = ((@winner % 10).to_s + "-" + (@loser % 10).to_s)
         @winning_combo_id = Combo.find_by(pick: @winning_combo).id
         @winning_user = User.find((Bet.find_by(combo_id: @winning_combo_id).better_id)) 
         @total_balance = @winning_user.balance + @pot
         @winning_user.update_attributes({'balance': @total_balance})
+        @game.completed = true
+        @game.save
     end
-    
-
-    
-
-
-    # amount = "formula for amount won"
-    # newbalance = User.find(params[:id]).balance + amount
-    # User.update(balance: newbalance)
-
   end
 end
+
+    
+
+    
+
+
+
+
+
+
+
+
+
 
 
 

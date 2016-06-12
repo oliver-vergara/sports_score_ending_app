@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160611065100) do
+ActiveRecord::Schema.define(version: 20160612203534) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20160611065100) do
     t.string   "schedule"
     t.decimal  "bet_amount",    precision: 9, scale: 2
     t.integer  "banker_id"
+    t.string   "banker"
   end
 
   add_index "games", ["banker_id"], name: "index_games_on_banker_id", using: :btree
@@ -66,6 +67,7 @@ ActiveRecord::Schema.define(version: 20160611065100) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.decimal  "balance",                precision: 9, scale: 2
+    t.string   "username"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
