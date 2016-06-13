@@ -14,7 +14,7 @@ class GamesController < ApplicationController
   end
 
   def create
-    @game = Game.new(name: params[:name], schedule: params[:schedule], bet_amount: params[:bet_amount], banker_id: current_user.id, banker: current_user.username)
+    @game = Game.new(name: params[:name], schedule: params[:schedule], bet_amount: params[:bet_amount], banker_id: current_user.id, banker: current_user.username, completed: false)
     @game.save
     redirect_to "/games/#{@game.id}"
   end

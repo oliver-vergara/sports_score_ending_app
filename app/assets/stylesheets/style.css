@@ -24,12 +24,12 @@
     margin-top: .85em;
     margin-right: 1em;
     border-radius: .25em;
-    background-color: #16a085;
+    background-color: #1ecde8;
 
 }
  
 .add-fund:hover {
-    background-color: #16a085;
+    background-color: #fff;
     color: red;
 }  
 
@@ -50,4 +50,9 @@ table.tg {
 
 .dropdown-toggle {
     background-color: transparent;
+}
+
+.login-btn {
+
+
 }

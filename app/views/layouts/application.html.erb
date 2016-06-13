@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 <html>
+<head>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
 
 <div id="navbar-main">
       <!-- Fixed navbar -->
@@ -30,13 +35,14 @@
                     <li><a href="#">Another action</a></li>
                     <li><a href="#">Something else here</a></li>
                     <li role="separator" class="divider"></li>
-                    <li><a><%= link_to "Sign Out", "/users/sign_out", method: :delete %></a></li>
+                    <li><a><%= link_to "Log out", "/users/sign_out", method: :delete %></a></li>
                   </ul>
             </li>
 
             <% end %>
             <% if !current_user && !request.original_url.include?("sign_in")%>
-              <li> <a href="http://localhost:3000/users/sign_in" target="_self" class="button mini button-transparent-bg" data-ga-interaction="Login Button" data-ga-text="innerText">Log in </a></li>
+              <li><a class='login'><%= link_to "Log In", "/users/sign_in" %></a></li>
+              <li><a class='login'><%= link_to "Sign Up", "/users/sign_up" %></a></li>
             <% end %>
           </ul>
         </div><!--/.nav-collapse -->
@@ -46,24 +52,12 @@
 
   
   
-
-<% if current_user %>
-  <h3>Logged in as: (<%= current_user.id %>) <%= current_user.email %></h3>
-<% else %>
-
-<% end %>
-<div class='login'><%= link_to "Sign Out", "/users/sign_out", method: :delete %></div>
-<div class='login'><%= link_to "Sign Up", "/users/sign_up" %></div>
-<div class='login'><%= link_to "Sign In", "/users/sign_in" %></div>
-<head>
-  <title>SportsScoreEndingApp</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
 <body>
-
 <%= yield %>
+
+
+
 
 </body>
 </html>
+  

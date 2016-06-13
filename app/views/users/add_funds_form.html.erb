@@ -3,11 +3,11 @@
 <%= form_tag "/users/add_funds", method: :post do %>
 
   <div>
-    <%= label_tag :balance %>
+    <%= label_tag :balance, "Amount" %>
     <%= text_field_tag :balance  %>
   </div>
 
-  <%= submit_tag 'Add Funds' %>
+  <%= submit_tag 'Add Fund' %>
  
 <% end %>
 
