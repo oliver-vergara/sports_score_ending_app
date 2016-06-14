@@ -27,7 +27,8 @@
               <!-- <li> <a href="#blog" class="smoothScroll"> Blog</a></li>
               <li> <a href="#contact" class="smoothScroll"> Contact</a></li> -->
               <li> <a class="navbar-header"> <p class="amount"><%= current_user.balance %></p> <p class="balance">Balance</p>  </a></li>
-              <li> <a href="/users/add_funds_form"  class="add-fund">Add Fund</a></li><li class="dropdown">
+              <li> <a href="/users/add_funds_form"  class="add-fund">Add Fund</a></li>
+              <li class="dropdown">
                 <button class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><%= current_user.username %>
                 </button>
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
@@ -37,7 +38,7 @@
                     <li role="separator" class="divider"></li>
                     <li><a><%= link_to "Log out", "/users/sign_out", method: :delete %></a></li>
                   </ul>
-            </li>
+              </li>
 
             <% end %>
             <% if !current_user && !request.original_url.include?("sign_in")%>

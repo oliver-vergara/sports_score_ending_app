@@ -28,6 +28,5 @@ class BetsController < ApplicationController
     user.update(balance: new_balance)
     redirect_to "/games/#{params[:game_id]}"
   end
-
-
 end
+
