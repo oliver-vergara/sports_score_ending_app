@@ -8,11 +8,20 @@
 </style>
 
 
-<h2 class="active"><%= @game.name %></h2>
+<div class="row" id="game-info">
+  <div class="col-md-1"></div>
+  <div class="col-md-2" id="name"><%= @game.name %></div>
+  <div class="col-md-2" id="name"><%= @game.schedule %></div>
+  <div class="col-md-2">Bet:   $<%= number_with_precision(@game.bet_amount, :precision => 2)%></div>
+  <div class="col-md-2">Pot:   <%= @pot %></div>
+  <div class="col-md-2">Banker:   <%= @game.banker %></div>
+  <div class="col-md-1"></div>
+</div>
+<!-- <h2 class="active"><%= @game.name %></h2>
 <h2 class="active"><%= @game.schedule %></h2>
 <h2 class="active">Bet:   <%= @game.bet_amount %></h2>
 <h2 class="active">Pot:   <%= @pot %></h2>
-<h2 class="active">Banker:   <%= @game.banker %></h2>
+<h2 class="active">Banker:   <%= @game.banker %></h2> -->
 
 
 <%= form_tag '/bets/batch', method: :post do %>
@@ -23,7 +32,7 @@
         <% row.each do |combo| %>
           <% if !@bets.select { |bet| bet.combo_id == combo.id && bet.better_id == current_user.id }.empty? %>
           <!-- shows only logged in user's bets -->
-            <td class="tg-qj3h"><%= check_box_tag combo.id, true, true %><%= combo.pick %></td>
+            <td class="tg-qj3h"><%= check_box_tag combo.id, true, true, disabled: true %><%= combo.pick %></td>
           <% elsif !@bets.select { |bet| bet.combo_id == combo.id && bet.better_id != current_user.id }.empty? %> 
             <td class="tg-qj3h"><%= check_box_tag combo.id, true, true, disabled: true %><%= combo.pick %></td>
           <% else %>

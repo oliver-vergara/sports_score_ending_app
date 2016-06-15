@@ -8,9 +8,10 @@
 
 .balance {
     padding: 0;
-    margin-top: -1.5em;
+    margin-top: -2em;
     text-transform: uppercase;
     font-size: .8em;
+    color: #fff;
 }
 .navbar-nav {
     float: left;
@@ -18,23 +19,27 @@
     height: 65px;
 }
 
-.add-fund {
+.container-fluid  .navbar-nav .add-fund {
     display: inline-block;
-    padding: .25em .5em !important;
-    margin-top: .85em;
+    padding: .25em .5em;
+    margin-top: 1.3em;
     margin-right: 1em;
     border-radius: .25em;
-    background-color: #1ecde8;
+    background-color: #37a90a;
+    font-size: 12px;
+    color: white;
 
 }
  
-.add-fund:hover {
-    background-color: #fff;
-    color: red;
+.container-fluid  .navbar-nav .add-fund:hover {
+    background-color: #277807;
+    color: #fff;
 }  
 
 .amount {
-    color: red;
+    color: white;
+    font-weight: bold;
+    margin-top: -.5em;
 }
 
 table.tg {
@@ -53,11 +58,58 @@ table.tg {
 }
 
 .login-btn {
-
-
 }
 
 .commit {
     margin-left: 49.1em;
-   
 }
+
+.col-md-2 {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#game-info {
+    margin-top: -1.8em;
+}
+
+#name {
+    margin-top: .2em;
+}
+
+#main-nav {
+    background-color: black;
+    border-color: black;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
+#logo {
+    font-size: 40px;
+    font-weight: bold;
+    color: #fff;
+    font-variant: small-caps;
+    margin-left: 1em;
+    margin-top: .15em;
+}
+
+#dropdownMenu1 {
+    margin-top: -.5em;
+    font-weight: 500;
+    font-family: Bank Gothic;
+    font-size: 20px;
+}
+
+.avatar {
+    width: 25px;
+    height: 25px;
+    margin: 0 10px 0 0;
+    box-shadow: 0 0 1px #fff;
+    display: inline-block;
+}
+
+#menu {
+    margin-top: .5em;
+    font-weight: 500;
+    font-size: 16px;
+    font-family: Bauhaus 93;

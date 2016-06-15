@@ -15,8 +15,13 @@ class GamesController < ApplicationController
 
   def create
     @game = Game.new(name: params[:name], schedule: params[:schedule], bet_amount: params[:bet_amount], banker_id: current_user.id, banker: current_user.username, completed: false)
-    @game.save
-    redirect_to "/games/#{@game.id}"
+    if current_user.balance < 100
+        flash[:error] = "You do not have enough money to start this!"
+        redirect_to "/users/add_funds_form"
+    else
+        @game.save
+        redirect_to "/games/#{@game.id}"
+    end
   end
 
   def show

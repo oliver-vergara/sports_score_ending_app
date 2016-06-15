@@ -6,8 +6,9 @@
   <%= csrf_meta_tags %>
 </head>
 
-<div id="navbar-main">
-      <!-- Fixed navbar -->
+<body>
+
+<!-- <div id="navbar-main">
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -24,8 +25,6 @@
               <li> <a href="#services" class="smoothScroll"> Upcoming</a></li>
               <li> <a href="#team" class="smoothScroll"> History</a></li>
               <li> <a href="#portfolio" class="smoothScroll"> Help</a></li>
-              <!-- <li> <a href="#blog" class="smoothScroll"> Blog</a></li>
-              <li> <a href="#contact" class="smoothScroll"> Contact</a></li> -->
               <li> <a class="navbar-header"> <p class="amount"><%= current_user.balance %></p> <p class="balance">Balance</p>  </a></li>
               <li> <a href="/users/add_funds_form"  class="add-fund">Add Fund</a></li>
               <li class="dropdown">
@@ -46,14 +45,62 @@
               <li><a class='login'><%= link_to "Sign Up", "/users/sign_up" %></a></li>
             <% end %>
           </ul>
-        </div><!--/.nav-collapse -->
+        </div>
       </div>
     </div>
-</div>
+</div> -->
 
   
-  
-<body>
+<nav class="navbar navbar-default" id="main-nav">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" id="logo" href="#">ScorEnd</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav pull-right" >
+        <% if current_user %>
+          <li><a href="/games" class="smoothScroll" id="menu">Lobby</a></li>
+          <li> <a href="#about" class="smoothScroll" id="menu"> How to play</a></li>
+          <li> <a href="#services" class="smoothScroll" id="menu"> Upcoming</a></li>
+          <li> <a href="#team" class="smoothScroll" id="menu"> History</a></li>
+          <li> <a href="#portfolio" class="smoothScroll" id="menu"> Help</a></li>
+          <li> <a class="navbar-header"> <p class="amount" >$<%=  number_with_precision(current_user.balance, :precision => 2)%></p> <p class="balance">Balance</p>  </a></li>
+          <li> <a href="/users/add_funds_form"  class="add-fund">Add Fund</a></li>
+          <li class="dropdown">
+              <a class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><%= current_user.username %>     
+              <img src="https://www.fanduel.com/images/member_defaultpic.gif" class="avatar">
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a><%= link_to "Log out", "/users/sign_out", method: :delete %></a></li>
+              </ul>
+          </li>
+        <% end %>
+        <% if !current_user && !request.original_url.include?("sign_in")%>
+          <li><a class='login'><%= link_to "Log In", "/users/sign_in" %></a></li>
+          <li><a class='login'><%= link_to "Sign Up", "/users/sign_up" %></a></li>
+        <% end %>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+  <% flash.each do |name, message|%>
+    <div class="alert alert-<%= name %>" role="alert"><%=message%></div>
+  <% end %>
+
+
 <%= yield %>
 
 
