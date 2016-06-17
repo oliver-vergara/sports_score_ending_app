@@ -1,5 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <% if current_user %>
-  <h2 class="active"> Active Games </h2>
+  <head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  </head>
+
+  <body>
+  <div class="container">
+    <h2>Games</h2>
+    <table class="table table-striped">
+      <%@games.each do |game|%>
+        <thead>
+          <tr>
+            <th>Games</th>
+            <th>Bet Amount</th>
+            <th>Prizes</th>
+            <th>Schedule</th>
+            <th>Starts</th>
+            <th>Scores</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="/games/<%= game.id %>"><%= game.name %></a></td>
+            <td><%= game.bet_amount %></td>
+            <td><%= game.bet_amount * 90 %></td>
+            <td><%= game.schedule %></td>
+            <td><%= game.starts %></td>
+            <td><%= game.winning_score.to_s + "-" + game.losing_score.to_s %></td>
+        </tbody>
+      <% end %>
+    </table>
+  </div>
+
+  </body>
+  
+        
+<% else %>
+
+<%  end %>
+
+</html>
+
+<!-- <h2 class="active"> Active Games </h2>
 
   <div class="row">
     <% @games.each do |game| %>
@@ -12,8 +61,5 @@
       </div>
     </div>
     <% end %>
-  </div>
-        
-<% else %>
-
-<%  end %>
+  </div> -->
+  

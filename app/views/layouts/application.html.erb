@@ -89,8 +89,8 @@
           </li>
         <% end %>
         <% if !current_user && !request.original_url.include?("sign_in")%>
-          <li><a class='login'><%= link_to "Log In", "/users/sign_in" %></a></li>
-          <li><a class='login'><%= link_to "Sign Up", "/users/sign_up" %></a></li>
+          <li><a class='signup' ><%= link_to "Sign Up", "/users/sign_up" %></a></li>
+          <li><a class='login' ><%= link_to "Log In", "/users/sign_in" %></a></li>
         <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->

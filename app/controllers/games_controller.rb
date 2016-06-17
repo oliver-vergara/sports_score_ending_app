@@ -4,9 +4,36 @@ class GamesController < ApplicationController
     @games = Game.all
 
     if current_user
-        games_of_user = current_user.games.where(complete: true)
+        games_of_user = current_user.games
         #determine winner, and update winner's balance
     end
+
+
+    # response_schedule = Unirest.get("http://api.sportradar.us/nba-t3/games/2016/06/10/schedule.json?api_key=5b9xdyg9pdam7ghgq4n9pwn9").body
+
+
+    # response_schedule["games"].each do |game|
+
+    #     game_summary = Unirest.get("http://api.sportradar.us/nba-t3/games/#{game["id"]}/summary.json?api_key=5b9xdyg9pdam7ghgq4n9pwn9").body
+    #     # puts "Game: #{game_summary.body}"
+    #     binding.pry
+        
+    #     if game_summary
+    #         p game_summary["away"]["points"]
+    #         p game_summary["home"]["points"]
+    #     end
+
+        # game_summary = game_summary.body
+        # # game_summary = game_summary.body
+
+
+        # puts "Home team:" + game_summary["home"]["market"] + game_summary["home"]["name"]
+        # puts "Away team:" + game_summary["away"]["market"] + game_summary["away"]["name"]
+        # puts "Final score:" + game_summary["home"]["points"] + " - " + game_summary["away"]["points"]
+
+    # end
+
+
   end
 
   def new
