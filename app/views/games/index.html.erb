@@ -1,29 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<% if current_user %>
-  <head>
-    <title>Bootstrap Example</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  </head>
-
-  <body>
   <div class="container">
-    <h2>Games</h2>
+    <h2 class="games-index">Games</h2>
     <table class="table table-striped">
       <%@games.each do |game|%>
         <thead>
           <tr>
-            <th>Games</th>
-            <th>Bet Amount</th>
-            <th>Prizes</th>
-            <th>Schedule</th>
-            <th>Starts</th>
-            <th>Scores</th>
+            <th class="row-header">Games</th>
+            <th class="row-header">Bet Amount</th>
+            <th class="row-header">Prizes</th>
+            <th class="row-header">Schedule</th>
+            <th class="row-header">Starts</th>
+            <th class="row-header">Scores</th>
           </tr>
         </thead>
         <tbody>
@@ -38,28 +25,3 @@
       <% end %>
     </table>
   </div>
-
-  </body>
-  
-        
-<% else %>
-
-<%  end %>
-
-</html>
-
-<!-- <h2 class="active"> Active Games </h2>
-
-  <div class="row">
-    <% @games.each do |game| %>
-    <div class="col-md-3">
-      <div class="thumbnail">
-        <a href="/games/<%= game.id %>">
-          <p><%= game.schedule %></p>
-          <p><%= game.name %></p>
-        </a>
-      </div>
-    </div>
-    <% end %>
-  </div> -->
-  

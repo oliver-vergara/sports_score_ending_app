@@ -16,8 +16,11 @@ Rails.application.routes.draw do
   # get 'users/:id/edit', to: 'users#edit'
   # post 'users/:id', to: 'users#update'
 
-  get 'users/add_funds_form', to: 'users#add_funds_form'
-  post 'users/add_funds', to: 'users#add_funds'
+  get '/users/add_funds_form', to: 'users#add_funds_form'
+  post '/users/add_funds', to: 'users#add_funds'
+  get '/users/:id', to: 'users#show'
+  get 'users/:id/edit', to: 'users#edit'
+  patch 'users/:id', to: 'users#update'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

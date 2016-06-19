@@ -1,10 +1,34 @@
 <style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{font-family:Arial, sans-serif;font-size:14px;padding:5px 20px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
-.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:5px 20px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
-.tg .tg-baqh{text-align:center;vertical-align:top}
-.tg .tg-qj3h{font-size:36px;text-align:center;vertical-align:top}
-.tg .tg-yw4l{vertical-align:top}
+  .tg  {
+    border-collapse:collapse;
+    border-spacing:0;
+  }
+  .tg td {
+    font-family:Arial, sans-serif;
+    font-size:14px;
+    /*padding:5px 20px;*/
+    overflow:hidden;
+    word-break:normal;
+  }
+  .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:5px 20px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+  .tg .tg-baqh{text-align:center;vertical-align:top}
+  .tg .tg-qj3h{font-size:36px;text-align:center;vertical-align:top}
+  .tg .tg-yw4l{vertical-align:top}
+
+.tg { border-collapse:collapse}
+
+.btn {
+  width: 80px;
+  height: 40px;
+  margin: 5px 5px 5px 5px;
+}
+
+
+
+.games-button {
+  background-color: #2E9AFE;
+}
+
 </style>
 
 
@@ -32,11 +56,27 @@
         <% row.each do |combo| %>
           <% if !@bets.select { |bet| bet.combo_id == combo.id && bet.better_id == current_user.id }.empty? %>
           <!-- shows only logged in user's bets -->
-            <td class="tg-qj3h"><%= check_box_tag combo.id, true, true, disabled: true %><%= combo.pick %></td>
+            <td class="tg-qj3h">
+              <span class="button-checkbox">
+                <button type="button" class="btn btn-primary selected-buttons" data-color="primary" disabled="true"><%= combo.pick %></button>
+                <%= check_box_tag combo.id, true, true, :style => 'display:none' %>
+              </span>
+            </td>
           <% elsif !@bets.select { |bet| bet.combo_id == combo.id && bet.better_id != current_user.id }.empty? %> 
-            <td class="tg-qj3h"><%= check_box_tag combo.id, true, true, disabled: true %><%= combo.pick %></td>
+            <td class="tg-qj3h">
+              <span class="button-checkbox">
+                <button type="button" class="btn btn-primary selected-buttons" data-color="primary" disabled="true"><%= combo.pick %></button>
+                <%= check_box_tag combo.id, true, true, :style => 'display:none' %>
+              </span>
+            </td>
           <% else %>
-            <td class="tg-qj3h"><%= check_box_tag combo.id, true %><%= combo.pick %></td>
+            <td class="tg-qj3h">
+              <span class="button-checkbox">
+              <!-- The ones not selected -->
+                <button type="button" class="btn games-button" data-color="primary"><%= combo.pick %></button>
+                <%= check_box_tag combo.id, true, false, :style => 'display:none' %>
+              </span>
+            </td>
           <% end %>
         <% end %>
       </tr>
@@ -51,4 +91,76 @@
   <h1> Winning Combo: <%= @winning_combo %></h1>
   <h1> User ID: <%= @winning_user.id %> WON!</h1>
 <% end %>
+
+<script type="text/javascript">
+  
+
+$(function () {
+    $('.button-checkbox').each(function () {
+
+        // Settings
+        var $widget = $(this),
+            $button = $widget.find('button'),
+            $checkbox = $widget.find('input:checkbox'),
+            color = $button.data('color'),
+            settings = {
+                on: {
+                    // icon: 'glyphicon glyphicon-check'
+                },
+                off: {
+                    // icon: 'glyphicon glyphicon-unchecked'
+                }
+            };
+
+        // Event Handlers
+        $button.on('click', function () {
+            $checkbox.prop('checked', !$checkbox.is(':checked'));
+            $checkbox.triggerHandler('change');
+            updateDisplay();
+        });
+        $checkbox.on('change', function () {
+            updateDisplay();
+        });
+
+        // Actions
+        function updateDisplay() {
+            var isChecked = $checkbox.is(':checked');
+
+            // Set the button's state
+            $button.data('state', (isChecked) ? "on" : "off");
+
+            // Set the button's icon
+            // $button.find('.state-icon')
+            //     .removeClass()
+            //     .addClass('state-icon ' + settings[$button.data('state')].icon);
+
+            // Update the button's color
+            if (isChecked) {
+                $button
+                    .removeClass('btn-default')
+                    .addClass('btn-' + color + ' active');
+            }
+            else {
+                $button
+                    .removeClass('btn-' + color + ' active')
+                    .addClass('btn-default');
+            }
+        }
+
+        // Initialization
+        function init() {
+
+            updateDisplay();
+
+            // // Inject the icon if applicable
+            // if ($button.find('.state-icon').length == 0) {
+            //     $button.prepend('<i class="state-icon ' + settings[$button.data('state')].icon + '"></i> ');
+            // }
+        }
+        init();
+    });
+});
+
+
+</script>
 
