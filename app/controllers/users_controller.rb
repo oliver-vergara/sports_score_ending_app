@@ -6,6 +6,9 @@ class UsersController < ApplicationController
 
   def add_funds
     @user = User.find_by(id: current_user.id)
+    if @user.balance == nil
+      @user.balance = 0
+    end
     @user.balance += params[:balance].to_i
     @user.save
     flash[:success] = "Funds Added"

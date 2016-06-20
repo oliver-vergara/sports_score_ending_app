@@ -1,20 +1,18 @@
 Rails.application.routes.draw do
 
-  # devise_for :users, controllers: { registrations: "users/registrations" }
   devise_for :users, controllers: { registrations: "users/registrations" }
 
   root 'games#index'
 
   get '/games', to: 'games#index'
   get '/games/new', to: 'games#new'
+  get '/games/score_input_form', to: 'games#score_input_form'
+  post '/games/score_input', to: 'games#score_input'
   post '/games/:id', to: 'games#create'
   get '/games/:id', to: 'games#show'
 
   post '/bets/batch', to: 'bets#batch'
   get '/bets', to: 'bets#index'
-
-  # get 'users/:id/edit', to: 'users#edit'
-  # post 'users/:id', to: 'users#update'
 
   get '/users/add_funds_form', to: 'users#add_funds_form'
   post '/users/add_funds', to: 'users#add_funds'

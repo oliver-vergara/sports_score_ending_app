@@ -60,8 +60,20 @@ table.tg {
 .login-btn {
 }
 
-.commit {
-    margin-left: 49.1em;
+#commit {
+    margin-left: 48.6em;
+}
+
+.btn-primary {
+    background-color: #33BBFF;
+    color: black;
+    border: 0px;
+    margin-left: 48.6em;
+    font-family: Bank Gothic;
+}
+
+.btn-primary:hover {
+    background-color: #339FFF;
 }
 
 .col-md-2 {
@@ -165,12 +177,31 @@ table.tg {
     overflow:hidden;
     word-break:normal;
   }
-  .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:5px 20px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
-  .tg .tg-baqh{text-align:center;vertical-align:top}
-  .tg .tg-qj3h{font-size:36px;text-align:center;vertical-align:top}
-  .tg .tg-yw4l{vertical-align:top}
+  .tg th {
+    font-family:Arial, sans-serif;
+    font-size:14px;
+    font-weight:normal;
+    padding:5px 20px;
+    border-style:solid;
+    border-width:1px;
+    overflow:hidden;
+    word-break:normal;
+}
+  .tg .tg-baqh {
+    text-align:center;
+    vertical-align:top;
+}
+  .tg .tg-qj3h {font-size:36px;
+    text-align:center;
+    vertical-align:top;
+}
+  .tg .tg-yw4l {
+    vertical-align:top;
+}
 
-.tg { border-collapse:collapse}
+.tg { 
+    border-collapse:collapse;
+}
 
 .btn {
   width: 80px;

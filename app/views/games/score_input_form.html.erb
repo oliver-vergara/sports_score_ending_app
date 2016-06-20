@@ -1,0 +1,19 @@
+<h1>Game Scores</h1>
+
+<%= form_tag "/games/score_input", method: :post do %>
+
+  <div>
+    <%= label_tag :winning_score, "Winner" %>
+    <%= text_field_tag :winning_score  %>
+  </div>
+
+    <div>
+    <%= label_tag :losing_score, "Loser" %>
+    <%= text_field_tag :losing_score  %>
+  </div>
+
+  <%= submit_tag 'Update Score' %>
+ 
+<% end %>
+
+

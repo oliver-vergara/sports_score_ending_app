@@ -8,34 +8,8 @@ class GamesController < ApplicationController
         games_of_user = current_user.games
         #determine winner, and update winner's balance
     end
-
-
-    # response_schedule = Unirest.get("http://api.sportradar.us/nba-t3/games/2016/06/10/schedule.json?api_key=5b9xdyg9pdam7ghgq4n9pwn9").body
-
-
-    # response_schedule["games"].each do |game|
-
-    #     game_summary = Unirest.get("http://api.sportradar.us/nba-t3/games/#{game["id"]}/summary.json?api_key=5b9xdyg9pdam7ghgq4n9pwn9").body
-    #     # puts "Game: #{game_summary.body}"
-    #     binding.pry
-        
-    #     if game_summary
-    #         p game_summary["away"]["points"]
-    #         p game_summary["home"]["points"]
-    #     end
-
-        # game_summary = game_summary.body
-        # # game_summary = game_summary.body
-
-
-        # puts "Home team:" + game_summary["home"]["market"] + game_summary["home"]["name"]
-        # puts "Away team:" + game_summary["away"]["market"] + game_summary["away"]["name"]
-        # puts "Final score:" + game_summary["home"]["points"] + " - " + game_summary["away"]["points"]
-
-    # end
-
-
   end
+
 
   def new
 
@@ -92,7 +66,45 @@ class GamesController < ApplicationController
         @game.save
     end
   end
+
+  def score_input_form
+      
+  end
+
+  def score_input
+    @game = Game.find_by(id: params[:id]) 
+    if @game.winning_score == nil
+        @game.winning_score = 0
+    elsif @game.losing_score == nil
+        @game.losing_score = 0
+    end
+    @game.winning_score = params[:winning_score]
+    @game.losing_score = params[:losing_score]
+    @game.save
+    flash[:success] = "Score Updated"
+    redirect_to '/games/#{game.id}'
+  end
+
+
 end
+
+
+
+    # response_schedule = Unirest.get("http://api.sportradar.us/nba-t3/games/2016/06/10/schedule.json?api_key=5b9xdyg9pdam7ghgq4n9pwn9").body
+
+
+    # response_schedule["games"].each do |game|
+
+    #     game_summary = Unirest.get("http://api.sportradar.us/nba-t3/games/#{game["id"]}/summary.json?api_key=5b9xdyg9pdam7ghgq4n9pwn9").body
+    #     # puts "Game: #{game_summary.body}"
+    #     binding.pry
+        
+    #     if game_summary
+    #         p game_summary["away"]["points"]
+    #         p game_summary["home"]["points"]
+    #     end
+
+
 
     
 

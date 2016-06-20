@@ -4,7 +4,7 @@
   <th><%= @game.name %></th>
   <th>Schedule:   <%= @game.schedule %></th>
   <th>Bet:  $<%= number_with_precision(@game.bet_amount, :precision => 2)%></th>
-  <th>Pot:  <%= @pot %></th>
+  <th>Pot:  $<%= number_with_precision(@pot, :precision => 2) %></th>
   <th>Banker:  <%= @game.banker %></th>
 </table>
 
@@ -34,7 +34,7 @@
             <td class="tg-qj3h">
               <span class="button-checkbox">
                 <button type="button" class="btn btn-primary selected-buttons" data-color="primary" disabled="true"><%= combo.pick %></button>
-                <%= check_box_tag combo.id, true, true, disabled: true, :style => 'display:none' %>
+                <%= check_box_tag combo.id, true, true, disabled: true,:style => 'display:none' %>
               </span>
             </td>
           <% else %>
@@ -53,7 +53,7 @@
 
   <%= hidden_field_tag :game_id, @game.id %>
 
-  <a class="commit"><%= submit_tag 'Commit' %></a>
+  <%= submit_tag 'Commit', :class => 'btn btn-primary gradient ', :id => 'commit' %>
 <% end %>
 <% if @winning_user && @winning_combo %>
   <h1> Winning Combo: <%= @winning_combo %></h1>
