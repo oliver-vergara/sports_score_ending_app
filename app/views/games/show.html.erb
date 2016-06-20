@@ -1,46 +1,14 @@
-<style type="text/css">
-  .tg  {
-    border-collapse:collapse;
-    border-spacing:0;
-  }
-  .tg td {
-    font-family:Arial, sans-serif;
-    font-size:14px;
-    /*padding:5px 20px;*/
-    overflow:hidden;
-    word-break:normal;
-  }
-  .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:5px 20px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
-  .tg .tg-baqh{text-align:center;vertical-align:top}
-  .tg .tg-qj3h{font-size:36px;text-align:center;vertical-align:top}
-  .tg .tg-yw4l{vertical-align:top}
-
-.tg { border-collapse:collapse}
-
-.btn {
-  width: 80px;
-  height: 40px;
-  margin: 5px 5px 5px 5px;
-}
 
 
+<table class="game-info">
+  <th><%= @game.name %></th>
+  <th>Schedule:   <%= @game.schedule %></th>
+  <th>Bet:  $<%= number_with_precision(@game.bet_amount, :precision => 2)%></th>
+  <th>Pot:  <%= @pot %></th>
+  <th>Banker:  <%= @game.banker %></th>
+</table>
 
-.games-button {
-  background-color: #2E9AFE;
-}
-
-</style>
-
-
-<div class="row" id="game-info">
-  <div class="col-md-1"></div>
-  <div class="col-md-2" id="name"><%= @game.name %></div>
-  <div class="col-md-2" id="name"><%= @game.schedule %></div>
-  <div class="col-md-2">Bet:   $<%= number_with_precision(@game.bet_amount, :precision => 2)%></div>
-  <div class="col-md-2">Pot:   <%= @pot %></div>
-  <div class="col-md-2">Banker:   <%= @game.banker %></div>
-  <div class="col-md-1"></div>
-</div>
+<hr class="hr-style"/>
 <!-- <h2 class="active"><%= @game.name %></h2>
 <h2 class="active"><%= @game.schedule %></h2>
 <h2 class="active">Bet:   <%= @game.bet_amount %></h2>
@@ -85,7 +53,7 @@
 
   <%= hidden_field_tag :game_id, @game.id %>
 
-  <a class="commit"><%= submit_tag 'Commit' %></a class="commit">
+  <a class="commit" id="commit"><%= submit_tag 'Commit' %></a>
 <% end %>
 <% if @winning_user && @winning_combo %>
   <h1> Winning Combo: <%= @winning_combo %></h1>

@@ -131,3 +131,66 @@ table.tg {
 .row-header {
     color: black;
 }
+
+.game-info {
+    margin: 0 auto;
+    font-size: 15px;
+    font-family: Bank Gothic;
+}
+
+.game-info th {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.hr-style {
+    border-top: 3px double #8c8b8b;
+}
+
+.hr:before {
+    background: transparent; 
+}
+
+
+
+/* games show */
+  .tg  {
+    border-collapse:collapse;
+    border-spacing:0;
+  }
+  .tg td {
+    font-family:Arial, sans-serif;
+    font-size:14px;
+    /*padding:5px 20px;*/
+    overflow:hidden;
+    word-break:normal;
+  }
+  .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:5px 20px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+  .tg .tg-baqh{text-align:center;vertical-align:top}
+  .tg .tg-qj3h{font-size:36px;text-align:center;vertical-align:top}
+  .tg .tg-yw4l{vertical-align:top}
+
+.tg { border-collapse:collapse}
+
+.btn {
+  width: 80px;
+  height: 40px;
+  margin: 5px 5px 5px 5px;
+}
+
+.games-button {
+  background-color: #FACC2E;
+  font-weight: 700;
+  font-size: 20px;
+  font-family: Bank Gothic;
+}
+
+.games-button:hover {
+  background-color: #FFBF00;
+}
+
+.tg .tg-qj3h .selected-buttons {
+  background-color: #A4A4A4;
+  color: black;
+  font-family: Bank Gothic;
+}

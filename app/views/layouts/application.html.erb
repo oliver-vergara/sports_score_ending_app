@@ -44,7 +44,7 @@
                   <li><a href="/games/new">Create Game</a></li>
                   <li><a href="#">Something else here</a></li>
                   <li role="separator" class="divider"></li>
-                  <li><a><%= link_to "Log out", "/users/sign_out", method: :delete %></a></li>
+                  <li><%= link_to "Log out", "/users/sign_out", :method => :delete %></li>
                 </ul>
             </li>
           <% end %>
