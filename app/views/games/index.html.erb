@@ -2,26 +2,28 @@
   <div class="container">
     <h2 class="games-index">Games</h2>
     <table class="table table-striped">
-      <%@games.each do |game|%>
         <thead>
           <tr>
+            <th class="row-header">ID</th>
             <th class="row-header">Games</th>
             <th class="row-header">Bet Amount</th>
             <th class="row-header">Prizes</th>
             <th class="row-header">Schedule</th>
-            <th class="row-header">Starts</th>
+            <th class="row-header">Banker</th>
             <th class="row-header">Scores</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td><a href="/games/<%= game.id %>"><%= game.name %></a></td>
-            <td><%= game.bet_amount %></td>
-            <td><%= game.bet_amount * 90 %></td>
-            <td><%= game.schedule %></td>
-            <td><%= game.starts %></td>
-            <td><%= game.winning_score.to_s + "-" + game.losing_score.to_s %></td>
-        </tbody>
-      <% end %>
-    </table>
-  </div>
+        <%@games.each do |game|%>
+          <tbody>
+            <tr>
+              <td><%= game.id %></td>
+              <td><a href="/games/<%= game.id %>"><%= game.name %></a></td>
+              <td><%= game.bet_amount %></td>
+              <td><%= game.bet_amount * 90 %></td>
+              <td><%= game.schedule %></td>
+              <td><%= game.banker %></td>
+              <td><%= game.winning_score.to_s + "-" + game.losing_score.to_s %></td>
+          </tbody>
+        <% end %>
+      </table>
+    </div>

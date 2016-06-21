@@ -68,21 +68,16 @@ class GamesController < ApplicationController
   end
 
   def score_input_form
-      
+    @game = Game.find_by(id: params[:id]) 
   end
 
   def score_input
     @game = Game.find_by(id: params[:id]) 
-    if @game.winning_score == nil
-        @game.winning_score = 0
-    elsif @game.losing_score == nil
-        @game.losing_score = 0
-    end
     @game.winning_score = params[:winning_score]
     @game.losing_score = params[:losing_score]
     @game.save
     flash[:success] = "Score Updated"
-    redirect_to '/games/#{game.id}'
+    redirect_to "/games/#{@game.id}"
   end
 
 

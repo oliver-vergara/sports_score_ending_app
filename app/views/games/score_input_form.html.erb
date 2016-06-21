@@ -1,6 +1,6 @@
 <h1>Game Scores</h1>
 
-<%= form_tag "/games/score_input", method: :post do %>
+<%= form_tag score_input_path, method: :post do %>
 
   <div>
     <%= label_tag :winning_score, "Winner" %>

@@ -6,8 +6,8 @@ Rails.application.routes.draw do
 
   get '/games', to: 'games#index'
   get '/games/new', to: 'games#new'
-  get '/games/score_input_form', to: 'games#score_input_form'
-  post '/games/score_input', to: 'games#score_input'
+  get '/games/:id/score_input_form', to: 'games#score_input_form'
+  post '/games/:id/score_input', to: 'games#score_input', as: "score_input"
   post '/games/:id', to: 'games#create'
   get '/games/:id', to: 'games#show'
 
