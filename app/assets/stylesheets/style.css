@@ -232,3 +232,15 @@ table.tg {
   color: black;
   font-family: Bank Gothic;
 }
+
+.game-index {
+    font-family: Bank Gothic;
+    font-weight: bold;
+}
+
+#join-button {
+    padding: 10px;
+    font-size: 15px;
+    margin-top: .01em;
+}
+

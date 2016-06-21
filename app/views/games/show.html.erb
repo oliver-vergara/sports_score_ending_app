@@ -6,6 +6,7 @@
   <th>Bet:  $<%= number_with_precision(@game.bet_amount, :precision => 2)%></th>
   <th>Pot:  $<%= number_with_precision(@pot, :precision => 2) %></th>
   <th>Banker:  <%= @game.banker %></th>
+  <th><a href="/games/#{params[:id]}/score_input_form">Update Score</a></th>
 </table>
 
 <hr class="hr-style"/>
