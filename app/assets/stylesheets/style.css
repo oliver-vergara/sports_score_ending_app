@@ -65,15 +65,15 @@ table.tg {
 }
 
 .btn-primary {
-    background-color: #33BBFF;
-    color: black;
+    background-color: #2471A3;
+    color: #F7F9F9;
     border: 0px;
     margin-left: 48.6em;
     font-family: Bank Gothic;
 }
 
 .btn-primary:hover {
-    background-color: #339FFF;
+    background-color: #1F618D;
 }
 
 .col-md-2 {
@@ -221,8 +221,14 @@ table.tg {
   background-color: #FFBF00;
 }
 
-.tg .tg-qj3h .selected-buttons {
-  background-color: #A4A4A4;
+.tg .tg-qj3h .current-user-buttons {
+  background-color: #1F618D;
+  color: white;
+  font-family: Bank Gothic;
+}
+
+.tg .tg-qj3h .other-user-buttons {
+  background-color: #D0D3D4;
   color: black;
   font-family: Bank Gothic;
 }

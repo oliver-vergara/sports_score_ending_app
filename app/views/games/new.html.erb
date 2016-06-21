@@ -2,30 +2,37 @@
 
 <%= form_tag '/games/new', method: :post do %>
 
-<div>
-  <%= label_tag :name %>
-  <%= text_field_tag :name %>
-</div>
+  <div>
+    <%= label_tag :name %>
+    <%= text_field_tag :name %>
+  </div>
 
-<div class="input-group date" id="datetimepicker1">
-<%= text_field_tag :start_time, class: "form-control" %>
-  <span class="input-group-addon">
-    <span class="glyphicon glyphicon-calendar"></span>
-  </span>
-</div>
+  <div class="container">
+    <div class="row">
+      <div class='col-sm-2'>
+        <div class="form-group">
+          <div class="input-group date" id="datetimepicker1">
+            <%= label_tag :start_time %>
+            <%= text_field_tag :start_time, class: "form-control" %>
+            <span class="input-group-addon">
+              <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+          </div>
+        </div>
+      </div>
+      <script type="text/javascript">
+        $(function () {
+          $('#datetimepicker1').datetimepicker();
+        });
+      </script>
+    </div>
+  </div>
 
-<div>
-  <%= label_tag :bet_amount %>
-  <%= text_field_tag :bet_amount %>
-</div>
+  <div>
+    <%= label_tag :bet_amount %>
+    <%= text_field_tag :bet_amount %>
+  </div>
 
-
-<%= submit_tag 'Start Game' %>
+  <%= submit_tag 'Start Game' %>
 
 <% end %>
-
-<script type="text/javascript">
-  $(function () {
-    $('#datetimepicker1').datetimepicker();
-  });
-</script>
