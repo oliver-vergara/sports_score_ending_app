@@ -11,6 +11,7 @@
             <th class="row-header">Schedule</th>
             <th class="row-header">Banker</th>
             <th class="row-header">Scores</th>
+            <th></th>
           </tr>
         </thead>
         <%@games.each do |game|%>
@@ -20,9 +21,10 @@
               <td><a href="/games/<%= game.id %>"><%= game.name %></a></td>
               <td><%= game.bet_amount %></td>
               <td><%= game.bet_amount * 90 %></td>
-              <td><%= game.schedule %></td>
+              <td><%= game.start_time %></td>
               <td><%= game.banker %></td>
               <td><%= game.winning_score.to_s + "-" + game.losing_score.to_s %></td>
+              <td><a href="/games/<%= game.id %>">Join</a></td>
           </tbody>
         <% end %>
       </table>

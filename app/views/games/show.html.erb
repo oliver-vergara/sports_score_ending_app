@@ -2,18 +2,14 @@
 
 <table class="game-info">
   <th><%= @game.name %></th>
-  <th>Schedule:   <%= @game.schedule %></th>
+  <th>Start Time:   <%= @game.start_time %></th>
   <th>Bet:  $<%= number_with_precision(@game.bet_amount, :precision => 2)%></th>
   <th>Pot:  $<%= number_with_precision(@pot, :precision => 2) %></th>
   <th>Banker:  <%= @game.banker %></th>
 </table>
 
 <hr class="hr-style"/>
-<!-- <h2 class="active"><%= @game.name %></h2>
-<h2 class="active"><%= @game.schedule %></h2>
-<h2 class="active">Bet:   <%= @game.bet_amount %></h2>
-<h2 class="active">Pot:   <%= @pot %></h2>
-<h2 class="active">Banker:   <%= @game.banker %></h2> -->
+
 
 
 <%= form_tag '/bets/batch', method: :post do %>

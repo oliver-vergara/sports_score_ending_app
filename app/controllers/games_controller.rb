@@ -16,7 +16,8 @@ class GamesController < ApplicationController
   end
 
   def create
-    @game = Game.new(name: params[:name], schedule: params[:schedule], bet_amount: params[:bet_amount], banker_id: current_user.id, banker: current_user.username, completed: false)
+    start_time = DateTime.strptime(params[:start_time], "%m/%d/%Y %I:%M %p")
+    @game = Game.new(name: params[:name], start_time: start_time, bet_amount: params[:bet_amount], banker_id: current_user.id, banker: current_user.username, completed: false)
     if current_user.balance < 100
         flash[:error] = "You do not have enough money to start this!"
         redirect_to "/users/add_funds_form"
@@ -56,15 +57,19 @@ class GamesController < ApplicationController
 
     @winner = @game.winning_score
     @loser = @game.losing_score
-    if @winner && @loser && @game.completed == false
+    if @winner != 0 && @loser != 0 && @game.completed == false
         @winning_combo = ((@winner % 10).to_s + "-" + (@loser % 10).to_s)
         @winning_combo_id = Combo.find_by(pick: @winning_combo).id
         @winning_user = User.find((Bet.find_by(combo_id: @winning_combo_id).better_id)) 
         @total_balance = @winning_user.balance + @pot
-        @winning_user.update_attributes({'balance': @total_balance})
+        @winning_user.update({'balance': @total_balance})
         @game.completed = true
         @game.save
     end
+# DEADLINE BETTING
+    # if @game.start_time > 30.minutes.ago
+    #     do stuff
+    # end
   end
 
   def score_input_form
