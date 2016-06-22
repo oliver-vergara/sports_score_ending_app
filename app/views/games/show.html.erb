@@ -6,52 +6,106 @@
   <th>Bet:  $<%= number_with_precision(@game.bet_amount, :precision => 2)%></th>
   <th>Pot:  $<%= number_with_precision(@pot, :precision => 2) %></th>
   <th>Banker:  <%= @game.banker %></th>
-  <th><a href="/games/#{params[:id]}/score_input_form">Update Score</a></th>
+
+  <% if @game_started && !@game.completed %>
+    <th><a href="/games/<%= @game.id %>/score_input_form">Update Score</a></th>
+  <% end %>
 </table>
 
 <hr class="hr-style"/>
 
+<div class='text-center'>
+  <% if @winning_user && @game.completed %>
 
+    <%= @winning_user.username %> won this game
 
-<%= form_tag '/bets/batch', method: :post do %>
+  <% elsif @game.completed %>
 
-  <table class="tg">
-    <% @rows.each do |row| %>
-      <tr>
-        <% row.each do |combo| %>
-          <% if !@bets.select { |bet| bet.combo_id == combo.id && bet.better_id == current_user.id }.empty? %>
-          <!-- shows only logged in user's bets -->
-            <td class="tg-qj3h">
-              <span class="button-checkbox">
-                <button type="button" class="btn btn-primary current-user-buttons" data-color="primary" disabled="true"><%= combo.pick %></button>
-                <%= check_box_tag combo.id, true, true, disabled: true, :style => 'display:none' %>
-              </span>
-            </td>
-          <% elsif !@bets.select { |bet| bet.combo_id == combo.id && bet.better_id != current_user.id }.empty? %> 
-            <td class="tg-qj3h">
-              <span class="button-checkbox">
-                <button type="button" class="btn btn-primary other-user-buttons" data-color="primary" disabled="true"><%= combo.pick %></button>
-                <%= check_box_tag combo.id, true, true, disabled: true,:style => 'display:none' %>
-              </span>
-            </td>
-          <% else %>
-            <td class="tg-qj3h">
-              <span class="button-checkbox">
-              <!-- The ones not selected -->
-                <button type="button" class="btn games-button" data-color="primary"><%= combo.pick %></button>
-                <%= check_box_tag combo.id, true, false, :style => 'display:none' %>
-              </span>
-            </td>
+    <%= @game.banker %> won this game
+
+  <% end %>
+</div>
+
+<!-- If the game hasn't started, then we show the betting table -->
+<% if !@game_started %>
+
+  <%= form_tag '/bets/batch', method: :post do %>
+    <table class="tg">
+      <% @rows.each do |row| %>
+        <tr>
+          <% row.each do |combo| %>
+            <% if !@bets.select { |bet| bet.combo_id == combo.id && bet.better_id == current_user.id }.empty? %>
+            <!-- shows only logged in user's bets -->
+              <td class="tg-qj3h">
+                <span class="button-checkbox">
+                  <button type="button" class="btn btn-primary current-user-buttons" data-color="primary" disabled="true"><%= combo.pick %></button>
+                  <%= check_box_tag combo.id, true, true, disabled: true, :style => 'display:none' %>
+                </span>
+              </td>
+            <% elsif !@bets.select { |bet| bet.combo_id == combo.id && bet.better_id != current_user.id }.empty? %> 
+              <td class="tg-qj3h">
+                <span class="button-checkbox">
+                  <button type="button" class="btn btn-primary other-user-buttons" data-color="primary" disabled="true"><%= combo.pick %></button>
+                  <%= check_box_tag combo.id, true, true, disabled: true,:style => 'display:none' %>
+                </span>
+              </td>
+            <% else %>
+              <td class="tg-qj3h">
+                <span class="button-checkbox">
+                <!-- The ones not selected -->
+                  <button type="button" class="btn games-button" data-color="primary"><%= combo.pick %></button>
+                  <%= check_box_tag combo.id, true, false, :style => 'display:none' %>
+                </span>
+              </td>
+            <% end %>
           <% end %>
-        <% end %>
-      </tr>
-    <% end %>
-  </table>
+        </tr>
+      <% end %>
+    </table>
+    <%= hidden_field_tag :game_id, @game.id %>
+    <%= submit_tag 'Commit', :class => 'btn btn-primary', :id => 'commit' %>
+  <% end %>
 
-  <%= hidden_field_tag :game_id, @game.id %>
+<!-- If the game has started, then everything is disabled -->
+<% else %>
 
-  <%= submit_tag 'Commit', :class => 'btn btn-primary', :id => 'commit' %>
+    <table class="tg">
+      <% @rows.each do |row| %>
+        <tr>
+          <% row.each do |combo| %>
+            <% if !@bets.select { |bet| bet.combo_id == combo.id && bet.better_id == current_user.id }.empty? %>
+            <!-- shows only logged in user's bets -->
+              <td class="tg-qj3h">
+                <span class="button-checkbox">
+                  <button type="button" class="btn btn-primary current-user-buttons" data-color="primary" disabled="true"><%= combo.pick %></button>
+                  <%= check_box_tag combo.id, true, true, disabled: true, :style => 'display:none' %>
+                </span>
+              </td>
+            <% elsif !@bets.select { |bet| bet.combo_id == combo.id && bet.better_id != current_user.id }.empty? %> 
+              <td class="tg-qj3h">
+                <span class="button-checkbox">
+                  <button type="button" class="btn btn-primary other-user-buttons" data-color="primary" disabled="true"><%= combo.pick %></button>
+                  <%= check_box_tag combo.id, true, true, disabled: true,:style => 'display:none' %>
+                </span>
+              </td>
+            <% else %>
+              <td class="tg-qj3h">
+                <span class="button-checkbox">
+                <!-- The ones not selected -->
+                  <button type="button" class="btn games-button" data-color="primary" disabled="true"><%= combo.pick %></button>
+                  <%= check_box_tag combo.id, true, false, :style => 'display:none' %>
+                </span>
+              </td>
+            <% end %>
+          <% end %>
+        </tr>
+      <% end %>
+    </table>
+
 <% end %>
+
+
+
 <% if @winning_user && @winning_combo %>
   <h1> Winning Combo: <%= @winning_combo %></h1>
   <h1> User ID: <%= @winning_user.id %> WON!</h1>

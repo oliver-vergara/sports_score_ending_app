@@ -1,5 +1,26 @@
 class UsersController < ApplicationController
 
+
+  def games
+    
+    id = params[:id]
+    @user = User.find(id)
+
+    @banker_games = Game.where(banker_id: @user.id)
+
+
+    @better_games = []
+    user_bets = Bet.select(:better_id, :game_id).uniq.where(better_id: @user.id)
+    user_bets.each do |bet|
+      game = Game.find(bet.game_id)
+      @better_games << game
+    end
+
+    @user_games = @banker_games + @better_games
+
+
+  end
+
   def add_funds_form
     @user = User.find_by(id: current_user.id)
   end

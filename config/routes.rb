@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get '/users/:id', to: 'users#show'
   get 'users/:id/edit', to: 'users#edit'
   patch 'users/:id', to: 'users#update'
+  get 'users/:id/games', to: 'users#games'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

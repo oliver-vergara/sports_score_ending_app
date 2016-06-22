@@ -1,0 +1,39 @@
+
+
+
+
+<div class="container">
+  <h2 class="games-index"><%= @user.username %>'s games</h2>
+  <table class="table table-striped">
+      <thead>
+        <tr>
+          <th class="row-header">ID</th>
+          <th class="row-header">Games</th>
+          <th class="row-header">Bet Amount</th>
+          <th class="row-header">Prizes</th>
+          <th class="row-header">Schedule</th>
+          <th class="row-header">Banker</th>
+          <th class="row-header">Scores</th>
+          <th></th>
+        </tr>
+      </thead>
+      <% @user_games.each do |game| %>
+        <tbody>
+          <tr class="index-row">
+            <td class="game-index"><%= game.id %></td>
+            <td class="game-index"><%= game.name %></td>
+            <td class="game-index">$<%= number_with_precision(game.bet_amount, :precision => 2)%></td>
+            <td class="game-index">$<%= number_with_precision(game.bet_amount * 90, :precision => 2) %></td>
+            <td class="game-index"><%= game.start_time %></td>
+            <td class="game-index"><%= game.banker %></td>
+            <% if game.winning_score != 0 %>
+              <td class="game-index"><%= game.winning_score.to_s + "-" + game.losing_score.to_s %></td>
+            <%  else %>
+              <td></td>
+            <% end %>
+            <td class="game-index"><a type="button" class="btn btn-primary btn-sm" id="join-button" href="/games/<%= game.id %>">Enter</a></td>
+          </tr>
+        </tbody>
+      <% end %>
+    </table>
+  </div>
