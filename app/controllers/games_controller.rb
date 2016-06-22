@@ -56,6 +56,8 @@ class GamesController < ApplicationController
     @game = Game.find_by(id: params[:id])
     @bets = Bet.where(game_id: @game.id)
     @pot = @game.bet_amount * 90
+    @tip = @game.bet_amount * 10
+    @pool = @game.bets.count * @game.bet_amount 
 
     if Time.now >= @game.start_time
         @game_started = true
@@ -66,7 +68,7 @@ class GamesController < ApplicationController
 
     @winner = @game.winning_score
     @loser = @game.losing_score
-    if @winner != 0 && @loser != 0 && @game.completed == false
+    if @winner != 0 && @loser != 0 && @game.completed == true
         @winning_combo = ((@winner % 10).to_s + "-" + (@loser % 10).to_s)
         @winning_combo_id = Combo.find_by(pick: @winning_combo).id
 
@@ -75,10 +77,7 @@ class GamesController < ApplicationController
             @winning_user = User.find((Bet.find_by(combo_id: @winning_combo_id).better_id))
         end 
     end
-# DEADLINE BETTING
-    # if @game.start_time > 30.minutes.ago
-    #     do stuff
-    # end
+
   end
 
   def score_input_form

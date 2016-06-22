@@ -1,8 +1,14 @@
 
 
 <table class="game-info">
+  <th>Game ID: <%= @game.id %></th>
   <th><%= @game.name %></th>
-  <th>Start Time:   <%= @game.start_time %></th>
+  <% if @game.completed %>
+    <th>Final Score: <%= @game.winning_score.to_s + "-" + @game.losing_score.to_s %></th>
+  <% end %>
+  <% if !@game.completed %>
+    <th>Start Time:   <%= @game.start_time %></th>
+  <% end %>
   <th>Bet:  $<%= number_with_precision(@game.bet_amount, :precision => 2)%></th>
   <th>Pot:  $<%= number_with_precision(@pot, :precision => 2) %></th>
   <th>Banker:  <%= @game.banker %></th>
@@ -14,14 +20,14 @@
 
 <hr class="hr-style"/>
 
-<div class='text-center'>
+<div class='text-center' id='winner-banner'>
   <% if @winning_user && @game.completed %>
 
-    <%= @winning_user.username %> won this game
+    <%= @winning_user.username %> won $<%= number_with_precision(@pot, :precision => 2)%>
 
   <% elsif @game.completed %>
 
-    <%= @game.banker %> won this game
+    <%= @game.banker %> won $<%= number_with_precision(@pot + @tip + @pool, :precision => 2)%>!
 
   <% end %>
 </div>
@@ -77,14 +83,24 @@
             <!-- shows only logged in user's bets -->
               <td class="tg-qj3h">
                 <span class="button-checkbox">
-                  <button type="button" class="btn btn-primary current-user-buttons" data-color="primary" disabled="true"><%= combo.pick %></button>
+                  <% if combo.id == @winning_combo_id %>
+                    <button type="button" class="btn btn-primary current-user-buttons winning-combo" data-color="primary" disabled="true"><%= combo.pick %></button>
+                  <% else %>
+                    <button type="button" class="btn btn-primary current-user-buttons" data-color="primary" disabled="true"><%= combo.pick %></button>
+                  <% end %>
+
                   <%= check_box_tag combo.id, true, true, disabled: true, :style => 'display:none' %>
                 </span>
               </td>
             <% elsif !@bets.select { |bet| bet.combo_id == combo.id && bet.better_id != current_user.id }.empty? %> 
               <td class="tg-qj3h">
                 <span class="button-checkbox">
-                  <button type="button" class="btn btn-primary other-user-buttons" data-color="primary" disabled="true"><%= combo.pick %></button>
+                  <% if combo.id == @winning_combo_id %>
+                    <button type="button" class="btn btn-primary other-user-buttons winning-combo" data-color="primary" disabled="true"><%= combo.pick %></button>
+                  <% else %>
+                    <button type="button" class="btn btn-primary other-user-buttons" data-color="primary" disabled="true"><%= combo.pick %></button>
+                  <% end %>
+
                   <%= check_box_tag combo.id, true, true, disabled: true,:style => 'display:none' %>
                 </span>
               </td>
@@ -92,7 +108,12 @@
               <td class="tg-qj3h">
                 <span class="button-checkbox">
                 <!-- The ones not selected -->
-                  <button type="button" class="btn games-button" data-color="primary" disabled="true"><%= combo.pick %></button>
+                  <% if combo.id == @winning_combo_id %>
+                    <button type="button" class="btn games-button winning-combo" data-color="primary" disabled="true"><%= combo.pick %></button>
+                  <% else %>
+                    <button type="button" class="btn games-button" data-color="primary" disabled="true"><%= combo.pick %></button>
+                  <% end %>
+
                   <%= check_box_tag combo.id, true, false, :style => 'display:none' %>
                 </span>
               </td>
@@ -104,12 +125,6 @@
 
 <% end %>
 
-
-
-<% if @winning_user && @winning_combo %>
-  <h1> Winning Combo: <%= @winning_combo %></h1>
-  <h1> User ID: <%= @winning_user.id %> WON!</h1>
-<% end %>
 
 <script type="text/javascript">
   
