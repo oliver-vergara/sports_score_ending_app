@@ -72,8 +72,8 @@ class GamesController < ApplicationController
         @winning_combo = ((@winner % 10).to_s + "-" + (@loser % 10).to_s)
         @winning_combo_id = Combo.find_by(pick: @winning_combo).id
 
-        @winning_bet = Bet.find_by(combo_id: @winning_combo_id)
-        if @game.bets && @winning_bet
+        @winning_bet = Bet.where(combo_id: @winning_combo_id, game_id: @game.id)
+        if @game.bets && !@winning_bet.empty?
             @winning_user = User.find((Bet.find_by(combo_id: @winning_combo_id).better_id))
         end 
     end

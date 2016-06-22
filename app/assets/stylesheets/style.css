@@ -257,4 +257,7 @@ table.tg {
   -webkit-animation-duration: 2s;
   -webkit-animation-iteration-count: infinite;
   color: white;
+  border: 0px;
 }
+
+

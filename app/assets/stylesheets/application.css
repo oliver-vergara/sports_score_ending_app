@@ -18,6 +18,7 @@
  *= require theme/bootstrap
  *= require theme/icomoon
  *= require theme/main
+ *= require animate
  *= require_tree .
  *= require_self
  */

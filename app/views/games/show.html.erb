@@ -20,7 +20,7 @@
 
 <hr class="hr-style"/>
 
-<div class='text-center' id='winner-banner'>
+<div class='text-center animated bounceIn' id='winner-banner'>
   <% if @winning_user && @game.completed %>
 
     <%= @winning_user.username %> won $<%= number_with_precision(@pot, :precision => 2)%>
