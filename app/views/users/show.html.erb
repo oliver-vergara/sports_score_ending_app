@@ -1,32 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<% if current_user %>
-  <body>
-    <div class="container">
-      <h2 class="games-index">User Profile</h2>
-      <table class="table">
-          <thead>
-            <tr>
-              <th class="row-header">First Name</th>
-              <th class="row-header">Last Name</th>
-              <th class="row-header">Username</th>
-              <th class="row-header">Email</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><%= current_user.first_name %></td>
-              <td><%= current_user.last_name %></td>
-              <td><%= current_user.username %></td>
-              <td><%= current_user.email %></td>
-              <td><a href="/users/<%= current_user.id %>/edit">EDIT</a></td>
-          </tbody>
-      </table>
+<div class="container">
+<div class="games-index-table">
+  <div class="games-index-header">
+    <h2>User Profile</h2>
+  </div>
+  <div class="games-index-body">
+  <table class="table table-striped">
+      <thead>
+        <tr>
+          <th class="row-header">First Name</th>
+            <th class="row-header">Last Name</th>
+            <th class="row-header">Username</th>
+            <th class="row-header">Email</th>
+            <th></th>
+        </tr>
+      </thead>
+      <% if current_user %>
+        <tbody>
+          <tr class="index-row">
+            <td class="game-index"><%= current_user.first_name %></td>
+            <td class="game-index"><%= current_user.last_name %></td>
+            <td class="game-index"><%= current_user.username %></td>
+            <td class="game-index"><%= current_user.email %></td>
+            <td class="game-index"><a href="/users/<%= current_user.id %>/edit">EDIT</a></td>
+        </tbody>
+      <% end %>
+    </table>
     </div>
-  </body>
-<% end %>
+  </div>
+</div>
 
       
       

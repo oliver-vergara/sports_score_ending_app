@@ -314,6 +314,14 @@ body.games-index {
     background-image: url('dark_wood.png');
 }
 
+body.users-show {
+    background-image: url('dark_wood.png');
+}
+
+body.users-edit {
+    background-image: url('dark_wood.png');
+}
+
 .games-index-table {
     background-color: white;
     border-radius: 5px;

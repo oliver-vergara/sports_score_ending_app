@@ -1,25 +1,25 @@
-<h1>Update Profile</h1>
-
-<%= form_tag "/users/#{current_user.id}", method: :patch do %>
-
-  <div>
-    <%= label_tag :first_name %>
-    <%= text_field_tag :first_name, current_user.first_name  %>
+<div class="container">
+  <div class="form-box">
+    <div class="form-header">
+      <h2>Edit Profile</h2>
+    </div>
+    <div class="form-body">
+      <%= form_tag "/users/#{current_user.id}", method: :patch do %>
+        <div class="form-group">
+          <label>First name</label>
+            <%= text_field_tag :first_name, current_user.first_name, class: "form-control", placeholder: "First name" %>
+        </div>
+        <div class="form-group">
+          <label>Last name</label>
+            <%= text_field_tag :last_name, current_user.last_name, class: "form-control", placeholder: "Last name" %>
+        </div>
+        <div class="form-group">
+          <label>Username</label>
+            <%= text_field_tag :username, current_user.username, class: "form-control", placeholder: "Username" %>
+        </div>
+        <%= submit_tag 'Update', class: "btn btn-primary new_game_button"  %>
+        
+      <% end %>
+    </div>
   </div>
-
-  <div>
-    <%= label_tag :last_name %>
-    <%= text_field_tag :last_name, current_user.last_name %>
-  </div>
-
-  <div>
-    <%= label_tag :username %>
-    <%= text_field_tag :username, current_user.username %>
-  </div>
-
-  
-
-
-  <%= submit_tag 'Update' %>
-
-<% end %>
+</div>
