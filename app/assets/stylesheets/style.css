@@ -352,6 +352,10 @@ body.games-show {
     background-image: url('dark_wood.png');
 }
 
+body.games-score_input_form {
+    background-image: url('dark_wood.png');
+}
+
 .game-info-div {
     background-color: white;
     margin-top: -20px;

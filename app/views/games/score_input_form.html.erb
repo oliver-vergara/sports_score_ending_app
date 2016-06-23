@@ -1,19 +1,23 @@
-<h1>Game Scores</h1>
-
-<%= form_tag score_input_path, method: :post do %>
-
-  <div>
-    <%= label_tag :winning_score, "Winner" %>
-    <%= text_field_tag :winning_score  %>
+<div class="container">
+  <div class="form-box">
+    <div class="form-header">
+      <h2>Game Score</h2>
+    </div>
+    <div class="form-body">
+      <%= form_tag score_input_path, method: :post do %>
+        <div class="form-group">
+          <label>Winner</label>
+            <%= text_field_tag :winning_score, nil, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <label>Loser</label>
+            <%= text_field_tag :losing_score, nil, class: "form-control" %>
+        </div>
+        <%= submit_tag 'Update Score', class: "btn btn-primary new_game_button"  %>
+        
+      <% end %>
+    </div>
   </div>
-
-    <div>
-    <%= label_tag :losing_score, "Loser" %>
-    <%= text_field_tag :losing_score  %>
-  </div>
-
-  <%= submit_tag 'Update Score' %>
- 
-<% end %>
+</div>
 
 
