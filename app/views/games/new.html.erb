@@ -1,43 +1,44 @@
-<h2>Start a New Game</h2>
 
-<%= form_tag '/games/new', method: :post do %>
-
-
-  <div class="container">
-    <div>
-    <%= label_tag :name %>
-    <%= text_field_tag :name %>
-  </div>
-
-    <div class="row">
-      <div class='col-sm-2'>
+<div class="container">
+  <div class="form-box">
+    <div class="form-header">
+      <h2>Start a New Game</h2>
+    </div>
+    <div class="form-body">
+      <%= form_tag '/games/new', method: :post do %>
         <div class="form-group">
+          <label>Game (Team vs Team)</label>
+          <%= text_field_tag :name, nil, class: "form-control", placeholder: "Team vs Team" %>
+        </div>
+        <div class="form-group">
+          <label>Start Time</label>
           <div class="input-group date" id="datetimepicker1">
-            <%= label_tag :start_time %>
-            <%= text_field_tag :start_time, class: "form-control" %>
+            <%= text_field_tag :start_time, nil, class: "form-control", placeholder: "" %>
             <span class="input-group-addon">
               <span class="glyphicon glyphicon-calendar"></span>
             </span>
           </div>
         </div>
-      </div>
-      <script type="text/javascript">
-        $(function () {
-          $('#datetimepicker1').datetimepicker();
-        });
-      </script>
+        <div class="form-group">
+          <label>Bet Amount</label>
+          <div class="input-group">
+            <span class="input-group-addon">$</span>
+            <%= text_field_tag :bet_amount, nil, class: "form-control", placeholder: "0.00" %>
+          </div>
+        </div>
+        <%= submit_tag 'Start Game', class: "btn btn-primary new_game_button" %>
+      <% end %>
     </div>
-    <div>
-      <%= label_tag :bet_amount %>
-      <%= text_field_tag :bet_amount %>
-    </div>
-
-    <%= submit_tag 'Start Game' %>
   </div>
+</div>
 
 
 
-  <div class=""
 
 
-<% end %>
+<script type="text/javascript">
+  $(function () {
+    $('#datetimepicker1').datetimepicker();
+  });
+</script>
+

@@ -1,6 +1,10 @@
 
 <div class="container">
-  <h2 class="games-index">Games</h2>
+<div class="games-index-table">
+  <div class="games-index-header">
+    <h2>Games</h2>
+  </div>
+  <div class="games-index-body">
   <table class="table table-striped">
       <thead>
         <tr>
@@ -21,7 +25,7 @@
             <td class="game-index"><%= game.name %></td>
             <td class="game-index">$<%= number_with_precision(game.bet_amount, :precision => 2)%></td>
             <td class="game-index">$<%= number_with_precision(game.bet_amount * 90, :precision => 2) %></td>
-            <td class="game-index"><%= game.start_time %></td>
+            <td class="game-index"><%= game.start_time.strftime("%b %e, %l:%M %p") %></td>
             <td class="game-index"><%= game.banker %></td>
             <% if game.winning_score != 0 %>
               <td class="game-index"><%= game.winning_score.to_s + "-" + game.losing_score.to_s %></td>
@@ -32,4 +36,6 @@
         </tbody>
       <% end %>
     </table>
+    </div>
   </div>
+</div>

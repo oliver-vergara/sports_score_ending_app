@@ -60,9 +60,6 @@ table.tg {
 .login-btn {
 }
 
-#commit {
-    margin-left: 48.6em;
-}
 
 .btn-primary {
     background-color: #2471A3;
@@ -106,10 +103,10 @@ table.tg {
 }
 
 #dropdownMenu1 {
-    margin-top: -.5em;
-    font-weight: 500;
+    margin-top: -.3em;
+    font-weight: bold;
     font-family: Bank Gothic;
-    font-size: 20px;
+    font-size: 25px;
     background-color: black;
 }
 
@@ -124,8 +121,8 @@ table.tg {
 #menu {
     margin-top: .5em;
     font-weight: 500;
-    font-size: 16px;
-    font-family: Bauhaus 93;
+    font-size: 18px;
+    font-family: Bank Gothic;
 }
 
 .login {
@@ -259,5 +256,122 @@ table.tg {
   color: white;
   border: 0px;
 }
+
+.form-box {
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+
+    margin-top: 100px;
+    border-radius: 5px;
+
+
+}
+
+.form-header {
+    background-color: #2471A3;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.form-header h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: white;
+    font-family: Bank Gothic;
+    font-weight: bold;
+}
+
+.form-body {
+    padding: 25px 25px 25px 25px;
+}
+
+.new_game_button {
+    width: 100% !important;
+}
+
+
+
+body.games-new {
+    background-image: url('dark_wood.png');
+}
+
+
+body.users-add_funds_form {
+    background-image: url('dark_wood.png');
+}
+
+
+body.users-games {
+    background-image: url('dark_wood.png');
+}
+
+body.games-index {
+    background-image: url('dark_wood.png');
+}
+
+.games-index-table {
+    background-color: white;
+    border-radius: 5px;
+}
+
+.games-index-body {
+    padding-left: 25px; 
+    padding-right: 25px; 
+    padding-top: 25px;
+    padding-bottom: 10px;
+}
+
+
+
+.games-index-header {
+    background-color: #2471A3;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.games-index-header h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: white;
+    font-family: Bank Gothic;
+    font-weight: bold;
+}
+
+
+
+
+body.games-show {
+    background-image: url('dark_wood.png');
+}
+
+.game-info-div {
+    background-color: white;
+    margin-top: -20px;
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    margin-bottom: 20px;
+}
+
+
+.games-commit-button {
+    width: 890px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    display: block;
+    margin-top: 15px;
+}
+
+
 
 

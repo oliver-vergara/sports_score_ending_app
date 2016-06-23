@@ -1,14 +1,20 @@
-<h1>Add Funds</h1>
 
-<%= form_tag "/users/add_funds", method: :post do %>
-
-  <div>
-    <%= label_tag :balance, "Amount" %>
-    <%= text_field_tag :balance  %>
+<div class="container">
+  <div class="form-box">
+    <div class="form-header">
+      <h2>Add Funds</h2>
+    </div>
+    <div class="form-body">
+      <%= form_tag "/users/add_funds", method: :post do %>
+        <div class="form-group">
+          <label>Amount</label>
+          <div class="input-group">
+            <span class="input-group-addon">$</span>
+            <%= text_field_tag :balance, nil, class: "form-control", placeholder: "0.00" %>
+          </div>
+        </div>
+        <%= submit_tag 'Add Fund', class: "btn btn-primary new_game_button" %>
+      <% end %>
+    </div>
   </div>
-
-  <%= submit_tag 'Add Fund' %>
- 
-<% end %>
-
-
+</div>

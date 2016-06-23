@@ -6,7 +6,7 @@
   <%= csrf_meta_tags %>
 </head>
 
-<body>
+<body class="<%= params[:controller] %>-<%= params[:action] %>">
 
 
 
@@ -56,9 +56,6 @@
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
-    <% flash.each do |name, message|%>
-      <div class="alert alert-<%= name %>" role="alert"><%=message%></div>
-    <% end %>
 
 
   <%= yield %>
