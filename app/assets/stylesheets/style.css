@@ -376,6 +376,10 @@ body.games-score_input_form {
     margin-top: 15px;
 }
 
-
+#winner-banner {
+    color: white;
+    font-weight: bold;
+    font-size: 25px;
+}
 
 
