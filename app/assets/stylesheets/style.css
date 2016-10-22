@@ -257,6 +257,10 @@ table.tg {
   border: 0px;
 }
 
+.container {
+    background-image: url(dark_wood.png);
+}
+
 .form-box {
     width: 600px;
     margin-left: auto;
@@ -288,6 +292,7 @@ table.tg {
 
 .form-body {
     padding: 25px 25px 25px 25px;
+
 }
 
 .new_game_button {
