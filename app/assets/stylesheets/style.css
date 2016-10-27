@@ -92,6 +92,7 @@ table.tg {
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
     border-radius: 0;
+    margin: 0 auto;
 }
 #logo {
     font-size: 40px;
@@ -259,6 +260,8 @@ table.tg {
 
 .container {
     background-image: url(dark_wood.png);
+    width: 1440px;
+    height: 720px;
 }
 
 .form-box {
@@ -269,8 +272,10 @@ table.tg {
 
     margin-top: 100px;
     border-radius: 5px;
+}
 
-
+.form-box.sign-up {
+    margin-top: 30px;
 }
 
 .form-header {
